@@ -17,6 +17,7 @@
     "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
     "gid-api": "makedatabetter-dev/gid-api",
+    "gid-create-concept": "makedatabetter-dev/gid-create-concept",
     "paper-input": "PolymerElements/paper-input#^2.0.2",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "paper-checkbox": "PolymerElements/paper-checkbox#^2.0.1",

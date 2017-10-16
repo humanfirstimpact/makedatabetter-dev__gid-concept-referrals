@@ -83,7 +83,7 @@
 		 </gid-api>			
          <p>
          <template is="dom-if" if="[[_loadingActions]]">
-         	<paper-spinner-lite active class="green"></paper-spinner-lite> <span>Loading concepts</span>
+         	<paper-spinner-lite active class="green"></paper-spinner-lite> <span>Loading actions</span>
        	 </template>
        	 <template is="dom-if" if="[[_actionList.length]]">
 			<select  on-change="_selectAction" style="width: 200px;">
@@ -96,6 +96,7 @@
 	  		<paper-input label="Referral Id" value={{referralId}} id="referralId"></paper-input>	
 	  		<paper-input label="Disposition" value={{disposition}} id="disposition"></paper-input>	
 	  		<paper-input label="Reason" value={{reason}} id="reason"></paper-input>	
+	  		<paper-input label="Concept" value={{concept}} id="concept"></paper-input>	
 	  		<paper-button raised class="indigo" id="listConceptBtn" on-click="_performAction">Submit</paper-button>
      	</template>
 		
@@ -267,6 +268,11 @@
             	notify: true,
             	value: ''
             },
+            concept : {
+            	type: String,
+            	notify: true,
+            	value: ''
+            },
             _isResponseReceived : {
             	type: Boolean,
             	notify: true,
@@ -313,6 +319,7 @@
         	 this.reason = '';
         	 this.offset = '';
         	 this.limit = '';
+        	 this.concept = '';
         	 this.response = [];
          },
          _resetVal: function(){
