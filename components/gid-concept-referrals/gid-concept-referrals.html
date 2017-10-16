@@ -187,6 +187,11 @@ Note: The inputs marked with '*' are mandatory inputs.
 			api-params={{_conceptReferralsParams}} api-token={{_conceptReferralsToken}}
 			api-timeout={{_conceptReferralsTimeout}}> </gid-api>			
 	     <!-- fetch nearby columns -->	
+	     
+	     	<gid-create-concept  api-url='https://ql50yzu0fj.execute-api.us-east-1.amazonaws.com/dev'
+	        label='Account' user = '1' applications = '["100283"]' lobs = '["100001"]' api-token = 'MTAxNjUwMzAxMTUwNDUwNTg3NDkwODA5MDFY' 
+	        create = true response='{{response}}'>
+	        </gid-create-concept>
        
 
   </template>
@@ -248,7 +253,7 @@ Note: The inputs marked with '*' are mandatory inputs.
         	    _paramsArr: {
 	           	   type: Array,
 	           	   notify: true,
-	           	   value: ["columnId", "lobId", "referral","disposition","reason","offset","limit"]
+	           	   value: ["columnId", "lobId", "disposition","reason","offset","limit"]
                 },
 	           /*Authorization token for accessing rest api*/
 	        	apiToken: {

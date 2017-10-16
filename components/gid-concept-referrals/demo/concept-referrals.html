@@ -83,7 +83,7 @@
 		 </gid-api>			
          <p>
          <template is="dom-if" if="[[_loadingActions]]">
-         	<paper-spinner-lite active class="green"></paper-spinner-lite> <span>Loading concepts</span>
+         	<paper-spinner-lite active class="green"></paper-spinner-lite> <span>Loading actions</span>
        	 </template>
        	 <template is="dom-if" if="[[_actionList.length]]">
 			<select  on-change="_selectAction" style="width: 200px;">
@@ -282,11 +282,6 @@
         			 this._isResponseReceived = false; 
         		 }
         	 }
-         },
-         _performAction: function(){
-        	 this._reset();
-        	 this.concept = $('select option:selected').val();
-        	 this._fetchConceptDetails = true;
          },
          _submit: function(event){
         	 this.apiUrl = $("#apiUrl").val();
