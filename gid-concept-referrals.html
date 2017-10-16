@@ -3,7 +3,6 @@
 -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../gid-api/gid-api.html">
-<link rel="import" href="../gid-create-concept/gid-create-concept.html">
 <!--
 ## gid-concept-referrals
 
@@ -189,9 +188,9 @@ Note: The inputs marked with '*' are mandatory inputs.
 			api-timeout={{_conceptReferralsTimeout}}> </gid-api>			
 	     <!-- fetch nearby columns -->	
 	     
-	     	<gid-create-concept  api-url={{apiUrl}}
-	        label= {{label}} user = {{user}}  lobs = {{lobId}} api-token = {{apiToken}} 
-	        create = {{_createConcept}} response='{{conceptCreationResponse}}'>
+	     	<gid-create-concept  api-url='https://ql50yzu0fj.execute-api.us-east-1.amazonaws.com/dev'
+	        label='Account' user = '1' applications = '["100283"]' lobs = '["100001"]' api-token = 'MTAxNjUwMzAxMTUwNDUwNTg3NDkwODA5MDFY' 
+	        create = true response='{{response}}'>
 	        </gid-create-concept>
        
 
@@ -238,12 +237,6 @@ Note: The inputs marked with '*' are mandatory inputs.
 	   	          value : '',
 	   	          notify :  true
 	 	        },
-	 	        /*Concept Label*/
-	 	        concept : {
-	            	type: String,
-	            	notify: true,
-	            	value: ''
-	            },
 	 	        /*Offset*/
 	 	        offset:{
 	 	          type: String,
@@ -256,17 +249,11 @@ Note: The inputs marked with '*' are mandatory inputs.
 		   	      value : '',
 		   	      notify :  true
 	 	        },
-	 	        /*Create concept flag*/
-	 	        _createConcept:{
-	 	        	type: Boolean,
-	 	        	notify: true,
-	 	        	value: false
-	 	        },
         	    /*Array listing the parameters*/
         	    _paramsArr: {
 	           	   type: Array,
 	           	   notify: true,
-	           	   value: ["columnId", "lobId", "referral","disposition","reason","offset","limit"]
+	           	   value: ["columnId", "lobId", "disposition","reason","offset","limit"]
                 },
 	           /*Authorization token for accessing rest api*/
 	        	apiToken: {
@@ -317,12 +304,6 @@ Note: The inputs marked with '*' are mandatory inputs.
 	     	  		type : Object,
 	     	  		notify : true,
 	     	  		observer : '_conceptReferralsErrorReceived'
-        	  	},
-        	  	/*Response sent to gid-create-concept. This is a private property*/
-        	    conceptCreationResponse : {
-	     	  		type : Array,
-	     	  		notify : true,
-	     	  		observer : '_conceptCreationResponseObserver'
         	  	},
      	        /*Response object*/
      	        response: {
@@ -375,9 +356,6 @@ Note: The inputs marked with '*' are mandatory inputs.
 	          if(newvalue != null){
 		             this.async(function() {
 		         		this.response =  newvalue;
-		         		if(this.response.referral.disposition === "Accepted as a concept"){
-		         			this._createConcept = true;
-		         		}
 		   		 	          }, 500);
 	          }
          	
@@ -390,14 +368,6 @@ Note: The inputs marked with '*' are mandatory inputs.
 		         		this.response =  newvalue.response;
 		   		 	          }, 500);
 	        	}
-	     },
-	     /* Response on concept creation */
-	     _conceptCreationResponseObserver : function(newvalue, oldvalue){
-   		  	if(this.conceptCreationResponse){
-	   		  	if(this.conceptCreationResponse.hasOwnProperty("id")){
-	   		  		this._createConcept = false;
-	   		  	}
-   		  	}
 	     },
 	     /* Reset method */
 		 _reset: function(){
