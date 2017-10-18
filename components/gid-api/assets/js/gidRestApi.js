@@ -72,6 +72,9 @@ var apiPath = {
     "faceted-columns": {
         "default": "/columns"
     },
+	"clusters": {
+        "default": "/clusters"
+    },
     "database-types": {
         "default": "/databases/types"
     },
@@ -98,7 +101,7 @@ var apiPath = {
         	"default": "/referrals/{referral}"
         }
     },
-    "concept-referral-dispositions": {
+    "dispositions": {
         "default": "/referrals/dispositions"
     }
 };
