@@ -13,7 +13,7 @@ This component covers four functionalities. The details are listed below:
 ## Flag as concept
 
 		<gid-concept-referrals api-url="<your-api-url>" api-token="<your-api-token>"
-		user="<your-user-id>" column-id="<column-id>" lob-id="<lob-id>" 
+		user="<your-user-id>" column-id="<column-id>" lob-id="<lob-id>" action="FLAG"
 		response = {{response}}>
 		</gid-concept-referrals>
 
@@ -21,6 +21,7 @@ Input:
  - User Id*
  - Column Id*
  - Lob Id*
+ - Action*
 
 Sample Input: (Query params)
  - POST /referrals?columnId="column-id"&lobId="lob-id"
@@ -42,13 +43,14 @@ Output:
  ## Unflag as concept
 
 		<gid-concept-referrals api-url="<your-api-url>" api-token="<your-api-token>"
-		user="<your-user-id>" referral="<referral-id>" 
+		user="<your-user-id>" referral="<referral-id>" action="UNFLAG"
 		response = {{response}}>
 		</gid-concept-referrals>
 
 Input:
  - User Id*
  - Referral Id*
+ - Action*
 
 Sample Input: (Query params)
  - DELETE /referrals/"referral-id"
@@ -69,7 +71,7 @@ Lists all the referrals proposed by all data stewards. It also provides a list o
 
 		<gid-concept-referrals api-url="<your-api-url>" api-token="<your-api-token>"
 		user="<your-user-id>" lob="<lob-id>" 
-		limit=<limit> offset=<offset>
+		limit=<limit> offset=<offset> action="LIST"
 		response = {{response}}>
 		</gid-concept-referrals>
 
@@ -78,6 +80,7 @@ Input:
  - Lob Id*
  - Limit
  - Offset
+ - Action*
 
 Sample Input: (Query params)
  - GET /referrals?"lob-id"&limit=limit&offset=offset or POST /referrals/"user-id"
@@ -127,6 +130,7 @@ Used to review the given referral by an information architect
 
 		<gid-concept-referrals api-url="<your-api-url>" api-token="<your-api-token>"
 		user="<your-user-id>" referral="<referral-id>" disposition="<your-disposition>" reason="<your-reason">
+		action="ACCEPT | REJECT"
 		response = {{response}}>
 		</gid-concept-referrals>
 
@@ -135,6 +139,7 @@ Input:
  - Referral Id*
  - Disposition*
  - Reason*
+ - Action*
 
 Sample Input: (Query params)
  - PATCH /referrals/"referral-id"??disposition="disposition"&reason="reason"
@@ -166,6 +171,7 @@ Output:
  - The `limit`  & `offset` parameters are used to paginate records
  - The `api-token` would contain the access token to access the mentioned rest end point.
  - The `response` property would return the response.
+ - The `action` parameter triggers the action
 	    
 If 'apiUrl' is not provided, then the component would fetch sample data from mock json.
 
