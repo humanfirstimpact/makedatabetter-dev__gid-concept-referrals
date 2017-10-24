@@ -309,11 +309,11 @@
         	 this.offset = '';
         	 this.limit = '';
         	 this.response = [];
-        	 this._actionList = [];
          },
          _resetVal: function(){
         	 $("#apiUrl").val("");
 			 $("#apiToken").val("");
+			 this._actionList = [];
        	     this._reset();
          },
          _actionListResponseReceived : function(newvalue, oldvalue){
