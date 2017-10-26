@@ -29,11 +29,11 @@
     "webcomponentsjs": "^0.7.24"
   },
   "homepage": "https://github.com/makedatabetter-dev/gid-concept-referrals",
-  "_release": "1e554f8ce8",
+  "_release": "b813b5cf14",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "1e554f8ce8de3efe8ae617ec3b9d6189a22d07d2"
+    "commit": "b813b5cf14305c451fe47e2975d7ac3be340a07a"
   },
   "_source": "https://github.com/makedatabetter-dev/gid-concept-referrals.git",
   "_target": "*",

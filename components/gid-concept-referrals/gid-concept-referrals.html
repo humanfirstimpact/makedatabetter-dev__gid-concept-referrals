@@ -188,16 +188,12 @@ Note: The inputs marked with '*' are mandatory inputs.
         
          <!-- fetch nearby columns -->	
 			<gid-api auto=false
-			method={{_conceptReferralsMethod}} api-url={{_conceptReferralsUrl}} response='{{conceptReferralsResponse}}'
-			error = '{{conceptReferralsError}}'
+			method={{_conceptReferralsMethod}} api-content-type = {{_conceptReferralsApiContentType}} api-url={{_conceptReferralsUrl}} response='{{conceptReferralsResponse}}'
+			error = '{{conceptReferralsError}}' request-body = {{_conceptReferralsRequestBody}}
 			api-params={{_conceptReferralsParams}} api-token={{_conceptReferralsToken}}
 			api-timeout={{_conceptReferralsTimeout}}> </gid-api>			
 	     <!-- fetch nearby columns -->	
 	     
-	     	<gid-create-concept  api-url='https://ql50yzu0fj.execute-api.us-east-1.amazonaws.com/dev'
-	        label='Account' user = '1' applications = '["100283"]' lobs = '["100001"]' api-token = 'MTAxNjUwMzAxMTUwNDUwNTg3NDkwODA5MDFY' 
-	        create = true response='{{response}}'>
-	        </gid-create-concept>
        
 
   </template>
@@ -294,11 +290,23 @@ Note: The inputs marked with '*' are mandatory inputs.
      	   	    	type: String,
      	   	    	notify: true
      	   	    },
-     	   	    /*Http mthod*/
+     	   	    /*Http method*/
      	   	    _conceptReferralsMethod : {
      	   	    	type: String,
      	   	    	notify: true
      	   	    },
+     	   		/*Request body*/
+     	   	    _conceptReferralsRequestBody : {
+     	   	    	type: Object,
+     	   	    	notify: true,
+     	   	    	value: {}
+     	   	    },
+     	   	    /* Api content type*/
+     	   		_conceptReferralsApiContentType : {
+	     	   		type: String,
+	 	   	    	notify: true,
+	 	   	    	value: 'application/json'
+     	   		},
      	   		/*Response sent to gid-api. This is a private property*/
         	    conceptReferralsResponse : {
 	     	  		type : Object,
@@ -425,6 +433,9 @@ Note: The inputs marked with '*' are mandatory inputs.
        			this._conceptReferralsParams = JSON.stringify(paramsObj);
        			if(this.apiToken){
        				this._conceptReferralsToken =  this.apiToken;
+       			}
+       			if(this._conceptReferralsMethod === "POST"){
+       				this._conceptReferralsApiContentType =  "application/x-www-form-urlencoded";
        			}
        			this._conceptReferralsTimeout =  this._conceptReferralsTimeout - 1;
          		
