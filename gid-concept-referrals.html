@@ -434,7 +434,7 @@ Note: The inputs marked with '*' are mandatory inputs.
        			if(this.apiToken){
        				this._conceptReferralsToken =  this.apiToken;
        			}
-       			if(this._conceptReferralsMethod === "POST"){
+       			if(this._conceptReferralsMethod === "POST" || this._conceptReferralsMethod === "PATCH" || this._conceptReferralsMethod === "DELETE"){
        				this._conceptReferralsApiContentType =  "application/x-www-form-urlencoded";
        			}
        			this._conceptReferralsTimeout =  this._conceptReferralsTimeout - 1;
